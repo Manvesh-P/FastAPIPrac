@@ -36,8 +36,8 @@ def get_data_by_id(_id):
     
 
 
-@app.get('/get_all_data/{limit}/{offset}')
-def get_all_data(limit: int = 10, offset: int = 0):
+@app.get('/get_all_data/{offset}/{limit}')
+def get_all_data(offset: int = 0, limit: int = 10):
     print('limit, ', limit)
     print('offset, ', offset)
     print('get_all_data called')
@@ -48,7 +48,7 @@ def get_all_data(limit: int = 10, offset: int = 0):
     # req_data = _cursor.execute('SELECT * FROM people_table WHERE playerID = "%s"' % _id)
     # req_data = _cursor.execute('SELECT * FROM people_table LIMIT 10;')
     # _cursor.execute('SELECT * FROM people_table LIMIT 10;')
-    _cursor.execute(f'SELECT * FROM people_table limit {limit} offset {offset};')
+    _cursor.execute(f'SELECT * FROM people_table offset {offset} limit {limit};')
     # print('req_data, ', req_data)
     # print(list(_cursor))
     req_data = list(_cursor)
